@@ -31,17 +31,30 @@ public class FurnitureServiceImpl implements FurnitureService {
     }
 
     @Override
-    public Long create(Furniture Furniture) {
-        return null;
+    public Long create(Furniture furniture) {
+        return furnitureRepository.save( furniture ).getId();
     }
 
     @Override
-    public Furniture update(Long id, Furniture Furniture) {
-        return null;
+    public Furniture update(Long id, Furniture furniture) {
+
+
+        Furniture furnitureForUpdate = furnitureRepository.findById( id ).orElse( null );
+
+        if ( furnitureForUpdate != null )
+        {
+            furnitureForUpdate.setName( furniture.getName() );
+            furnitureForUpdate.setDescription( furniture.getDescription() );
+            furnitureForUpdate.setProducer( furniture.getProducer() );
+            furnitureForUpdate.setPrice( furniture.getPrice() );
+            furnitureForUpdate.setAvailableAmount( furniture.getAvailableAmount() );
+            furnitureRepository.save( furnitureForUpdate );
+        }
+        return furnitureForUpdate;
     }
 
     @Override
     public void delete(Long id) {
-
+        furnitureRepository.deleteById( id );
     }
 }
