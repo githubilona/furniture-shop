@@ -1,0 +1,49 @@
+<div class="row">
+<div class="class col-6 offset-md-3">
+<div class="card mb-5">
+    <div class="card-body">
+      <form (ngSubmit)="onSubmit()" #userForm="ngForm">
+        
+        <h2>Create new account</h2>
+        
+        <div class="form-group row">
+            <label for="email" class="col-sm-4 col-form-label col-form-label-sm">Email</label>
+            <div class="col-sm-8">
+              <input  type="text" [(ngModel)]="user.email" id="email" name="email"  required #email="ngModel"
+               class="form-control form-control-sm" placeholder="example@example.com">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="name" class="col-sm-4 col-form-label col-form-label-sm">Login</label>
+            <div class="col-sm-8">
+              <input type="text" [(ngModel)]="user.username" id="name" name="name" required #name="ngModel"
+               class="form-control form-control-sm" placeholder="login">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="password" class="col-sm-4 col-form-label col-form-label-sm">Password</label>
+            <div class="col-sm-8">
+              <input type="password" [(ngModel)]="user.password" id="password" name="password" required #password="ngModel"
+               class="form-control form-control-sm" placeholder="Enter your password">
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label for="confirmPassword" class="col-sm-4 col-form-label col-form-label-sm">Confirm password</label>
+            <div class="col-sm-8">
+              <input type="password" [(ngModel)]="user.confirmPassword" id="confirmPassword" name="confirmPassword" required #confirmPassword="ngModel"
+               class="form-control form-control-sm" placeholder="Renter your password">
+            </div>
+        </div>
+
+        <div class="text-center">
+            <button type="submit" [disabled]="!userForm.form.valid" class="btn btn-primary col-sm-4">Submit</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+  </div>
+</div>
