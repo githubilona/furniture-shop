@@ -1,7 +1,6 @@
 package com.example.furnitureshop.controllers;
 
 import com.example.furnitureshop.dtos.UserDTO;
-import com.example.furnitureshop.model.User;
 import com.example.furnitureshop.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.BindingResult;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 @RestController
-@RequestMapping("/register")
 public class UserController {
 
     private final UserService userService;
@@ -23,11 +21,16 @@ public class UserController {
         this.userService = userService;
     }
 
-    @PostMapping
+    @PostMapping("/register")
     public void registerUser(@RequestBody @Valid UserDTO userDTO, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()){
+        if (bindingResult.hasErrors()) {
             return;
         }
-        userService.create(userDTO);
+        userService.register(userDTO);
+    }
+
+    @PostMapping("/login")
+    public boolean login(@RequestBody UserDTO userDTO) {
+        return userService.login(userDTO.getUsername(), userDTO.getPassword());
     }
 }

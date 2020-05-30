@@ -25,12 +25,22 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User create(UserDTO userDTO) {
+    public User register(UserDTO userDTO) {
         User user = new User();
         user.setUsername(userDTO.getUsername());
         user.setPassword(encoder.encode(userDTO.getPassword()));
         user.setEmail(userDTO.getEmail());
         user.setUserRoles(Collections.singleton(roleRepository.findUserRoleByUserType(UserRole.UserType.ROLE_USER)));
         return userRepository.save(user);
+    }
+
+    @Override
+    public boolean login(String username, String password) {
+        User u = userRepository.findUserByUsername(username);
+        if (u == null) {
+            return false;
+        }
+        return u.getUsername().equals(username)
+                && encoder.matches(u.getUsername(), encoder.encode(password));
     }
 }

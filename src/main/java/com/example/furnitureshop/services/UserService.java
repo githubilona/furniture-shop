@@ -4,5 +4,7 @@ import com.example.furnitureshop.dtos.UserDTO;
 import com.example.furnitureshop.model.User;
 
 public interface UserService {
-    User create (UserDTO userDTO);
+    User register(UserDTO userDTO);
+
+    boolean login(String login, String password);
 }
