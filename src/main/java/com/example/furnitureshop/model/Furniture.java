@@ -46,4 +46,14 @@ public class Furniture {
     @Max (100000)
     @NotNull
     private int availableAmount;
+
+    public Furniture(@Size(min = 3, max = 200) @NotBlank String name, @Size(min = 3, max = 100000) @NotBlank String description,
+                     @Size(min = 3, max = 200) @NotBlank String producer, @Min(1) @Max(1000000) BigDecimal price,
+                     @Min(1) @Max(100000) int availableAmount) {
+        this.name = name;
+        this.description = description;
+        this.producer = producer;
+        this.price = price;
+        this.availableAmount = availableAmount;
+    }
 }

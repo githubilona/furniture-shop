@@ -1,0 +1,26 @@
+<div class="card my-5">
+  <div class="card-body">
+    <table class="table table-bordered table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Name</th>
+          <th scope="col">Producer</th>
+          <th scope="col">Description</th>
+          <th scope="col">Price</th>
+          <th scope="col">Amout</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let f of furniture">
+          <td>{{ f.id }}</td>
+          <td>{{ f.name }}</td>
+          <td>{{ f.producer }}</td>
+          <td>{{ f.description }}</td>
+          <td>{{ f.price }}</td>
+          <td>{{ f.availableAmount }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
