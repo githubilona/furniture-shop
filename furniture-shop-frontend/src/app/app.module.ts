@@ -6,16 +6,25 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FurnitureListComponent } from './furniture-list/furniture-list.component';
 import { FurnitureService } from './service/furniture.service';
+import { NavbarComponent } from './navbar/navbar.component';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatButtonModule} from '@angular/material/button';
+
 
 @NgModule({
    declarations: [
       AppComponent,
-      FurnitureListComponent
+      FurnitureListComponent,
+      NavbarComponent
    ],
    imports: [
       BrowserModule,
       AppRoutingModule,
-      HttpClientModule
+      HttpClientModule,
+      MatToolbarModule,
+      BrowserAnimationsModule,
+      MatButtonModule
    ],
    providers: [
      FurnitureService
