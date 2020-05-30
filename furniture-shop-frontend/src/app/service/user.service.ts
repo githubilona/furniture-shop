@@ -6,12 +6,12 @@ import { User } from '../model/user';
   providedIn: 'root',
 })
 export class UserService {
-  private usersUrl: string;
+  private registerUrl: string;
 
   constructor(private http: HttpClient) {
-    this.usersUrl = 'http://localhost:8080/users';
+    this.registerUrl = 'http://localhost:8080/register';
   }
   public save(user: User) {
-    return this.http.post<User>(this.usersUrl, user);
+    return this.http.post<User>(this.registerUrl, user);
   }
 }
