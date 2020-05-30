@@ -9,6 +9,7 @@ import javax.persistence.*;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -35,4 +36,12 @@ public class User {
     @NotBlank
     @NotNull
     private String email;
+
+
+    @ManyToMany
+    @JoinTable (name = "users_roles",
+            joinColumns = @JoinColumn (name = "user_id"),
+            inverseJoinColumns = @JoinColumn (name = "role_id"))
+    private Set<UserRole> userRoles;
+
 }
