@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Furniture } from '../model/furniture';
-import { FurnitureService } from '../service/furniture.service';
+import { FurnitureService } from '../service/furniture/furniture.service';
 
 @Component({
   selector: 'app-furniture-list',
