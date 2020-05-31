@@ -8,6 +8,7 @@ import com.example.furnitureshop.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
 import java.util.Collections;
 
@@ -16,12 +17,14 @@ public class UserServiceImpl implements UserService {
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final PasswordEncoder encoder;
+    private final CartService cartService;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder encoder) {
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder encoder, CartService cartService) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.encoder = encoder;
+        this.cartService = cartService;
     }
 
     @Override
@@ -31,7 +34,9 @@ public class UserServiceImpl implements UserService {
         user.setPassword(encoder.encode(userDTO.getPassword()));
         user.setEmail(userDTO.getEmail());
         user.setUserRoles(Collections.singleton(roleRepository.findUserRoleByUserType(UserRole.UserType.ROLE_USER)));
-        return userRepository.save(user);
+        userRepository.save(user);
+        cartService.createCart(user);
+        return user;
     }
 
     @Override
@@ -42,5 +47,14 @@ public class UserServiceImpl implements UserService {
         }
         return u.getUsername().equals(username)
                 && encoder.matches(u.getUsername(), encoder.encode(password));
+    }
+
+
+    @Override
+    public User getByUsername(String username) {
+        if (!StringUtils.isEmpty(username)) {
+            return userRepository.findUserByUsername(username);
+        }
+        return null;
     }
 }
