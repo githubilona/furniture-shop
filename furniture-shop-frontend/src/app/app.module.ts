@@ -13,6 +13,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatButtonModule} from '@angular/material/button';
 import { FooterComponent } from './footer/footer.component';
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
+import { LoginComponent } from './login/login.component';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { RegistrationFormComponent } from './registration-form/registration-form
       FurnitureListComponent,
       NavbarComponent,
       FooterComponent,
-      RegistrationFormComponent
+      RegistrationFormComponent,
+      LoginComponent
    ],
    imports: [
       BrowserModule,
