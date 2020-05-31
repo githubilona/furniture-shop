@@ -9,16 +9,28 @@
           <th scope="col">Description</th>
           <th scope="col">Price</th>
           <th scope="col">Amout</th>
+          <th scope="col">Buy</th>
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let f of furniture">
+        <tr *ngFor="let f of furniture; let i=index">
           <td>{{ f.id }}</td>
           <td>{{ f.name }}</td>
           <td>{{ f.producer }}</td>
           <td>{{ f.description }}</td>
           <td>{{ f.price }}</td>
           <td>{{ f.availableAmount }}</td>
+          <td>
+            <form (ngSubmit)="buy(f.id, f[i])" #userForm="ngForm">
+              <div class="form-group row">
+                <div class="col col-lg-3">
+                  <input type="text" [(ngModel)]='f[i]' name='f[i]' class="form-control">
+                </div>
+                <button type="submit" class="btn btn-success">Buy</button>
+              </div>
+                
+            </form>
+          </td>
         </tr>
       </tbody>
     </table>

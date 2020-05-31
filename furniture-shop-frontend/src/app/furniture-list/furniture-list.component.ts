@@ -17,4 +17,11 @@ export class FurnitureListComponent implements OnInit {
       this.furniture = data;
     });
   }
+
+  buy(id: number, amount: number) {
+    // this.cartService.save(id, amount).subscribe((res) => {
+    //   this.bought = true;
+    //   setTimeout(() => this.changeStatus(), 2000);
+    // });
+  }
 }

@@ -16,6 +16,7 @@ import { RegistrationFormComponent } from './registration-form/registration-form
 import { LoginComponent } from './login/login.component';
 import { UserService } from './service/user/user.service';
 import { AuthService } from './service/auth/auth.service';
+import { CartComponent } from './cart/cart.component';
 
 
 @NgModule({
@@ -25,7 +26,8 @@ import { AuthService } from './service/auth/auth.service';
       NavbarComponent,
       FooterComponent,
       RegistrationFormComponent,
-      LoginComponent
+      LoginComponent,
+      CartComponent
    ],
    imports: [
       BrowserModule,

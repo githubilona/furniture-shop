@@ -1,11 +1,14 @@
 <mat-toolbar color="primary" class="mat-elevation-z8">
   <span>Furniture shop</span>
 
-  <a mat-button>Furniture</a>
+  <a mat-button [routerLink]="['/furniture']">Furniture</a>
   <a mat-button routerLink=".">Link</a>
 
   <div class="spacer"></div>
 
+  <div *ngIf="isAuthenticated()">
+    <button mat-button [routerLink]="['/cart']">My cart</button>
+  </div>
   <div *ngIf="!isAuthenticated()">
     <button mat-button routerLink="register">Register</button>
   </div>
