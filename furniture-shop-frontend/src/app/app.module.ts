@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -17,6 +17,8 @@ import { LoginComponent } from './login/login.component';
 import { UserService } from './service/user/user.service';
 import { AuthService } from './service/auth/auth.service';
 import { CartComponent } from './cart/cart.component';
+import { CartService } from './service/cart/cart.service';
+import { RequestInterceptor } from './service/auth/request-interceptor';
 
 
 @NgModule({
@@ -41,7 +43,13 @@ import { CartComponent } from './cart/cart.component';
    providers: [
      FurnitureService,
      UserService,
-     AuthService
+     AuthService,
+     CartService,
+     {
+      provide: HTTP_INTERCEPTORS,
+      useClass: RequestInterceptor,
+      multi: true
+    }
    ],
    bootstrap: [
       AppComponent

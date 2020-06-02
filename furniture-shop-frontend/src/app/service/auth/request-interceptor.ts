@@ -9,7 +9,7 @@ export class RequestInterceptor implements HttpInterceptor {
     constructor(public auth: AuthService) { }
 
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
-        const token = this.auth.getToken();
+        let token = this.auth.getToken();
         if (token !== '') {
             req = req.clone({
                 setHeaders: {

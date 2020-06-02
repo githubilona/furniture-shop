@@ -22,8 +22,8 @@ public class CartController {
 
     @GetMapping
     public CartDTO getCart(@RequestHeader("Authorization") String auth) {
-           String u =  userAuthentication.getUsername(auth);
-            System.out.println("AUTH username " + u);
+        String u = userAuthentication.getUsername(auth);
+        System.out.println("AUTH username " + u);
         return new CartDTO(cartService.getCart(userAuthentication.getUsername(auth)).getCartItems());
     }
 

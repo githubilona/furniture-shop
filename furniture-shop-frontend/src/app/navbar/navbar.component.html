@@ -6,9 +6,9 @@
 
   <div class="spacer"></div>
 
-  <div *ngIf="isAuthenticated()">
-    <button mat-button [routerLink]="['/cart']">My cart</button>
-  </div>
+  <!-- <div *ngIf="isAuthenticated()"> -->
+    <a mat-button routerLink="cart">My cart</a>
+  <!-- </div> -->
   <div *ngIf="!isAuthenticated()">
     <button mat-button routerLink="register">Register</button>
   </div>
