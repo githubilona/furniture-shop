@@ -12,25 +12,23 @@ import javax.validation.constraints.Positive;
 @Data
 @Entity
 @Table(name = "cart_items")
-public class CartItem
-{
-        @Id
-        @GeneratedValue(strategy = GenerationType.IDENTITY)
-        private Long id;
+public class CartItem {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
-        @ManyToOne(fetch = FetchType.EAGER)
-        @JoinColumn(name = "furniture_id")
-        @NotNull
-        private Furniture furniture;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "furniture_id")
+    @NotNull
+    private Furniture furniture;
 
-        @NotNull
-        @Max(10000)
-        @Positive
-        private Long amount;
+    @NotNull
+    @Max(10000)
+    @Positive
+    private Long amount;
 
-        public CartItem(@NotNull Furniture furniture, @NotNull @Max(100000) @Positive Long amount )
-        {
-                this.furniture = furniture;
-                this.amount = amount;
-        }
+    public CartItem(@NotNull Furniture furniture, @NotNull @Max(100000) @Positive Long amount) {
+        this.furniture = furniture;
+        this.amount = amount;
+    }
 }

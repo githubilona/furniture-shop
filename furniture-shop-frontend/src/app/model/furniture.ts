@@ -3,6 +3,6 @@ export class Furniture {
   name: string;
   description: string;
   producer: string;
-  price: string;
+  price: number;
   availableAmount: string;
 }

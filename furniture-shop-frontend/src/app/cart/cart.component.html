@@ -1,1 +1,40 @@
-<p>cart works!</p>
+<div class="container">
+    <div class="card my-5">
+      <div class="card-body">
+        <div *ngIf="cartItems.list !== null">
+          <table class="table table-bordered table-striped">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">Furniture ID</th>
+                <th scope="col">Name</th>
+                <th scope="col">Amount</th>
+                <th scope="col">Price</th>
+                <th scope="col">Total price</th>
+                <!-- <th scope="col">Remove</th> -->
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let cartItem of cartItems.list">
+                <td>{{ cartItem.furniture.id }}</td>
+                <td>{{ cartItem.furniture.name }}</td>
+                <td>{{ cartItem.amount }}</td>
+                <td>{{ cartItem.furniture.price }} zł</td>
+                <td>{{ cartItem.furniture.price * cartItem.amount }} zł</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="row">
+          <div class="col-auto mr-auto"></div>
+
+          <div class="col-auto">
+            <h3 class="text-success">Total: {{ sum }} zł</h3>
+            <form (ngSubmit)="buy()" #userForm="ngForm">
+              <button type="submit" class="btn btn-success col-lg">Buy</button>
+            </form>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  </div>

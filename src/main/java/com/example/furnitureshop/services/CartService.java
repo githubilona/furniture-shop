@@ -9,5 +9,5 @@ public interface CartService {
 
     Cart getCart(String username);
 
-    void addToCart(String username, Furniture furniture, int amount);
+    void addToCart(String username, Furniture furniture, Long amount);
 }

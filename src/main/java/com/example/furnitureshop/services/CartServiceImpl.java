@@ -1,6 +1,7 @@
 package com.example.furnitureshop.services;
 
 import com.example.furnitureshop.model.Cart;
+import com.example.furnitureshop.model.CartItem;
 import com.example.furnitureshop.model.Furniture;
 import com.example.furnitureshop.model.User;
 import com.example.furnitureshop.repositories.CartRepository;
@@ -41,7 +42,19 @@ public class CartServiceImpl implements CartService {
     }
 
     @Override
-    public void addToCart(String username, Furniture furniture, int amount) {
-
+    public void addToCart(String username, Furniture furniture, Long amount) {
+        Cart cart = cartRepository.findByUser(userRepository.findUserByUsername(username));
+        if (cart != null) {
+            CartItem cartItem = cart.getCartItems()
+                    .stream()
+                    .filter(e -> e.getFurniture().getId().equals(furniture.getId()))
+                    .findFirst()
+                    .orElse(null);
+            if (cartItem == null) {
+                cart.getCartItems().add(new CartItem(furniture, amount));
+            } else
+                cartItem.setAmount(cartItem.getAmount() + amount);
+            cartRepository.save(cart);
+        }
     }
 }

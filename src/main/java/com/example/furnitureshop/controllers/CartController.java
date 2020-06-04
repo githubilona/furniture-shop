@@ -2,6 +2,7 @@ package com.example.furnitureshop.controllers;
 
 import com.example.furnitureshop.config.UserAuthentication;
 import com.example.furnitureshop.dtos.CartDTO;
+import com.example.furnitureshop.model.Furniture;
 import com.example.furnitureshop.services.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -22,9 +23,17 @@ public class CartController {
 
     @GetMapping
     public CartDTO getCart(@RequestHeader("Authorization") String auth) {
-        String u = userAuthentication.getUsername(auth);
-        System.out.println("AUTH username " + u);
         return new CartDTO(cartService.getCart(userAuthentication.getUsername(auth)).getCartItems());
     }
+
+    @PostMapping("/{id}")
+    public CartDTO addToCart(@RequestHeader("Authorization") String auth,
+                             @PathVariable(name = "id") Furniture furniture,
+                             @RequestParam(name = "amount", required = false, defaultValue = "1") Long amount) {
+        String username = userAuthentication.getUsername(auth);
+        cartService.addToCart(username, furniture, amount);
+        return new CartDTO(cartService.getCart(username).getCartItems());
+    }
+
 
 }
