@@ -35,5 +35,11 @@ public class CartController {
         return new CartDTO(cartService.getCart(username).getCartItems());
     }
 
+    @PutMapping
+    public void makeOrder(@RequestHeader("Authorization") String auth) {
+        String username = userAuthentication.getUsername(auth);
+        cartService.makeOrder(username);
+    }
+
 
 }
