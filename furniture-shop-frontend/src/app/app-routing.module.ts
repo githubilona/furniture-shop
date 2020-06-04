@@ -4,13 +4,15 @@ import { FurnitureListComponent } from './furniture-list/furniture-list.componen
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
 import { LoginComponent } from './login/login.component';
 import { CartComponent } from './cart/cart.component';
+import { OrderListComponent } from './order-list/order-list.component';
 
 
 const routes: Routes = [
   { path: 'furniture', component: FurnitureListComponent },
   { path: 'register', component: RegistrationFormComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'cart', component: CartComponent }
+  { path: 'cart', component: CartComponent },
+  { path: 'orders', component: OrderListComponent }
 ];
 
 @NgModule({

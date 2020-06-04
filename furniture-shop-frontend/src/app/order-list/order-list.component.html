@@ -1,0 +1,44 @@
+<div class="container">
+    <div class="card my-5">
+      <div class="card-body">
+        <table class="table table-bordered table-striped">
+          <thead class="thead-dark">
+            <tr>
+              <th scope="col">ID</th>
+              <th scope="col">Order Date</th>
+              <th scope="col">Item</th>
+              <th scope="col">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let order of orders; let i = index">
+              <td>{{ order.orderID }}</td>
+              <td>{{ order.orderDate }}</td>
+              <td>
+                <div *ngFor="let cartItem of order.cartItems; let j = index">
+                  <div class="row">
+                      <div class="col-auto">
+                        <h2> {{cartItem.amount}} <small>x</small></h2> 
+                      </div>
+                      <div class="col-auto-md-5">
+                        {{ cartItem.furniture.name }}
+                        <h5>{{ cartItem.furniture.producer }}</h5>
+                      </div>
+                      <div class="col-sm text-success text-center">
+                        <h4>{{ cartItem.furniture.price }} zł</h4>
+                      </div>
+                  </div>
+                  <div *ngIf="(order.cartItems.length%2==0)">
+                    <div *ngIf="order.cartItems.length!=j+1"><hr></div>
+                </div>
+                </div>
+              </td>
+              <td>
+                {{ calculateSum(i) }} zł
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>

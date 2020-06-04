@@ -10,7 +10,7 @@ import { FurnitureService } from './service/furniture/furniture.service';
 import { NavbarComponent } from './navbar/navbar.component';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatButtonModule} from '@angular/material/button';
+import { MatButtonModule } from '@angular/material/button';
 import { FooterComponent } from './footer/footer.component';
 import { RegistrationFormComponent } from './registration-form/registration-form.component';
 import { LoginComponent } from './login/login.component';
@@ -19,40 +19,41 @@ import { AuthService } from './service/auth/auth.service';
 import { CartComponent } from './cart/cart.component';
 import { CartService } from './service/cart/cart.service';
 import { RequestInterceptor } from './service/auth/request-interceptor';
-
+import { OrderListComponent } from './order-list/order-list.component';
+import { OrderService } from './service/order/order-service.service';
 
 @NgModule({
-   declarations: [
-      AppComponent,
-      FurnitureListComponent,
-      NavbarComponent,
-      FooterComponent,
-      RegistrationFormComponent,
-      LoginComponent,
-      CartComponent
-   ],
-   imports: [
-      BrowserModule,
-      AppRoutingModule,
-      HttpClientModule,
-      MatToolbarModule,
-      BrowserAnimationsModule,
-      MatButtonModule,
-      FormsModule
-   ],
-   providers: [
-     FurnitureService,
-     UserService,
-     AuthService,
-     CartService,
-     {
+  declarations: [
+    AppComponent,
+    FurnitureListComponent,
+    NavbarComponent,
+    FooterComponent,
+    RegistrationFormComponent,
+    LoginComponent,
+    CartComponent,
+    OrderListComponent,
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    MatToolbarModule,
+    BrowserAnimationsModule,
+    MatButtonModule,
+    FormsModule,
+  ],
+  providers: [
+    FurnitureService,
+    UserService,
+    AuthService,
+    CartService,
+    {
       provide: HTTP_INTERCEPTORS,
       useClass: RequestInterceptor,
-      multi: true
-    }
-   ],
-   bootstrap: [
-      AppComponent
-   ]
+      multi: true,
+    },
+    OrderService,
+  ],
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
