@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.stream.Collectors;
 
 @Service
 public class CartServiceImpl implements CartService {
@@ -85,6 +86,19 @@ public class CartServiceImpl implements CartService {
             }
         }
         return null;
+    }
+    @Override
+    public boolean removeItemById(String username, Long id) {
+        Cart cart = cartRepository.findByUser(userRepository.findUserByUsername(username));
+        if (cart != null) {
+            cart.setCartItems(cart.getCartItems()
+                    .stream()
+                    .filter(e -> !e.getId().equals(id))
+                    .collect(Collectors.toList())
+            );
+            cartRepository.save(cart);
+        }
+        return true;
     }
 
 }

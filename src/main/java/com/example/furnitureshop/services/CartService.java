@@ -13,4 +13,6 @@ public interface CartService {
     void addToCart(String username, Furniture furniture, Long amount);
 
     Order makeOrder(String username);
+
+    boolean removeItemById(String username, Long id);
 }

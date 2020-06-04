@@ -37,4 +37,7 @@ export class CartComponent implements OnInit {
       .buy()
       .subscribe((res) => this.router.navigate(['/orders']));
   }
+  remove(id: number){
+    this.cartService.remove(id).subscribe(() => this.fetchData());
+  }
 }

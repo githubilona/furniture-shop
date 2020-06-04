@@ -5,6 +5,7 @@ import com.example.furnitureshop.dtos.CartDTO;
 import com.example.furnitureshop.model.Furniture;
 import com.example.furnitureshop.services.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -41,5 +42,11 @@ public class CartController {
         cartService.makeOrder(username);
     }
 
+    @DeleteMapping("/{id}")
+    @PreAuthorize("isAuthenticated()")
+    public void removeItemById(@RequestHeader("Authorization") String auth, @PathVariable("id") Long id) {
+        String username = userAuthentication.getUsername(auth);
+        cartService.removeItemById(username, id);
+    }
 
 }
