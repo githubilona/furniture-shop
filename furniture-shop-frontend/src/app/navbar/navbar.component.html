@@ -11,6 +11,9 @@
   <div *ngIf="isAuthenticated()">
     <a mat-button routerLink="orders">My orders</a>
   </div>
+  <div *ngIf="isAuthenticated()">
+    <a mat-button routerLink="profile">My profile</a>
+  </div>
   <div *ngIf="!isAuthenticated()">
     <button mat-button routerLink="register">Register</button>
   </div>

@@ -21,6 +21,7 @@ import { CartService } from './service/cart/cart.service';
 import { RequestInterceptor } from './service/auth/request-interceptor';
 import { OrderListComponent } from './order-list/order-list.component';
 import { OrderService } from './service/order/order-service.service';
+import { UserAddressComponent } from './user-address/user-address.component';
 
 @NgModule({
   declarations: [
@@ -32,6 +33,7 @@ import { OrderService } from './service/order/order-service.service';
     LoginComponent,
     CartComponent,
     OrderListComponent,
+    UserAddressComponent,
   ],
   imports: [
     BrowserModule,
