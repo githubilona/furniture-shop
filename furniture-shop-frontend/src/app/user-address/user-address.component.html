@@ -1,5 +1,5 @@
 <div class="container">
-    <div *ngIf="address">
+    <div >
       <!-- <div *ngIf="isDone">
         <div class="alert alert-success my-1" role="alert">
           {{ success }}
@@ -7,7 +7,7 @@
       </div> -->
       Your profile
   
-      <form #form="ngForm">
+      <form #form="ngForm" (ngSubmit)="updateAddress()">
         <div class="form-row">
           <div class="col-md-6">
             <div class="form-group">
@@ -71,7 +71,7 @@
         </div>
         <div>
           <br />
-          <button class="btn btn-success">Save</button>
+          <button class="btn btn-success" >Save</button>
         </div>
       </form>
     </div>

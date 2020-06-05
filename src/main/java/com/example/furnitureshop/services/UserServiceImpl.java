@@ -1,5 +1,6 @@
 package com.example.furnitureshop.services;
 
+import com.example.furnitureshop.dtos.AddressDTO;
 import com.example.furnitureshop.dtos.UserDTO;
 import com.example.furnitureshop.model.User;
 import com.example.furnitureshop.model.UserRole;
@@ -18,13 +19,15 @@ public class UserServiceImpl implements UserService {
     private final RoleRepository roleRepository;
     private final PasswordEncoder encoder;
     private final CartService cartService;
+    private final AddressService addressService;
 
     @Autowired
-    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder encoder, CartService cartService) {
+    public UserServiceImpl(UserRepository userRepository, RoleRepository roleRepository, PasswordEncoder encoder, CartService cartService, AddressService addressService) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.encoder = encoder;
         this.cartService = cartService;
+        this.addressService = addressService;
     }
 
     @Override
@@ -33,6 +36,7 @@ public class UserServiceImpl implements UserService {
         user.setUsername(userDTO.getUsername());
         user.setPassword(encoder.encode(userDTO.getPassword()));
         user.setEmail(userDTO.getEmail());
+        user.setAddress(addressService.create(new AddressDTO()));
         user.setUserRoles(Collections.singleton(roleRepository.findUserRoleByUserType(UserRole.UserType.ROLE_USER)));
         userRepository.save(user);
         cartService.createCart(user);

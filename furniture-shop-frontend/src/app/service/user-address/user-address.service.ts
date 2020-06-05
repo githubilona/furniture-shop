@@ -11,7 +11,11 @@ export class UserAddressService {
   constructor(private http: HttpClient) {
     this.userAddressUrl = 'http://localhost:8080/address';
   }
-  public getAddress(){
+  public getAddress() {
     return this.http.get<Address>(this.userAddressUrl);
+  }
+
+  public update(address: Address) {
+    return this.http.put<Address>(this.userAddressUrl, address);
   }
 }
