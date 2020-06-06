@@ -62,4 +62,10 @@ public class UserController {
                           @RequestBody UserDTO userDTO) {
         return userService.update(id, userDTO);
     }
+
+    @GetMapping("/admin")
+    @PreAuthorize("isAuthenticated()")
+    public Boolean hasAdminRole(@RequestHeader("Authorization") String auth) {
+        return userAuthentication.hasAdminRole(auth);
+    }
 }

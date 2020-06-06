@@ -2,6 +2,14 @@
   <span>Furniture shop</span>
 
   <a mat-button [routerLink]="['/furniture']">Furniture</a>
+  
+
+  <div *ngIf="authService.hasAdminRole()">
+
+        <a mat-button class="text-warning" routerLink="/furniture/add">Add furniture</a>
+        <a mat-button class="text-warning" routerLink="/user/all">User list</a>
+  
+  </div>
 
   <div class="spacer"></div>
 

@@ -8,7 +8,7 @@ import { AuthService } from '../service/auth/auth.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent implements OnInit {
-  constructor(private router: Router, private authService: AuthService) {}
+  constructor(private router: Router, public authService: AuthService) {}
 
   ngOnInit(): void {}
 
@@ -17,6 +17,7 @@ export class NavbarComponent implements OnInit {
   }
   logout() {
     sessionStorage.clear();
+    localStorage.clear();
     this.router.navigate(['/furniture']);
   }
 }
