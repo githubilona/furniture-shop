@@ -15,6 +15,8 @@ import javax.validation.constraints.NotNull;
 @AllArgsConstructor
 public class UserDTO
 {
+        private Long id;
+
         @NotNull
         @NotBlank
         @Length(min = 4, max = 30)
@@ -39,4 +41,6 @@ public class UserDTO
         public boolean isPasswordEqual() {
                 return password == null || password.equals(confirmPassword);
         }
+
+        private boolean locked;
 }

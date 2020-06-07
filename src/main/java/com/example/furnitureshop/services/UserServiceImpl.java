@@ -10,7 +10,6 @@ import com.example.furnitureshop.repositories.RoleRepository;
 import com.example.furnitureshop.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
@@ -95,7 +94,14 @@ public class UserServiceImpl implements UserService {
                 .map(userMapper::UserToDTO)
                 .orElseThrow(() -> new UserNotExistsException(this.userNotExists));
     }
-
+    @Override
+    public void delete(Long id) {
+        userRepository.findById(id).map(e -> {
+            e.setLocked(!e.isLocked());
+            userRepository.save(e);
+            return e;
+        }).orElseThrow(() -> new UserNotExistsException(this.userNotExists));
+    }
 
 
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.List;
 
+@CrossOrigin(origins = {"http://localhost:4200"})
 @RestController
 public class UserController {
 
@@ -56,7 +57,7 @@ public class UserController {
         return userMapper.UserToDTO(user);
     }
 
-    @PutMapping("/user/{id}")
+    @PutMapping("/user/profile/{id}")
     @PreAuthorize("isAuthenticated()")
     public UserDTO update(@PathVariable("id") Long id,
                           @RequestBody UserDTO userDTO) {
@@ -67,5 +68,11 @@ public class UserController {
     @PreAuthorize("isAuthenticated()")
     public Boolean hasAdminRole(@RequestHeader("Authorization") String auth) {
         return userAuthentication.hasAdminRole(auth);
+    }
+
+    @DeleteMapping("/users/{id}")
+    @Secured("ROLE_ADMIN")
+    public void delete(@PathVariable("id") Long id) {
+        userService.delete(id);
     }
 }

@@ -20,6 +20,14 @@ export class UserService {
     return this.http.get<User>(this.baseUrl + 'user/profile');
   }
   public update(id: number, user: User) {
-    return this.http.put<User>(this.baseUrl + 'user/' + id, user);
+    return this.http.put<User>(this.baseUrl + 'user/profile/' + id, user);
+  }
+
+  public findAll() {
+    return this.http.get<User[]>(this.baseUrl + 'users');
+  }
+
+  public delete(id: number) {
+    return this.http.delete<User>(this.baseUrl + 'users/' + id);
   }
 }

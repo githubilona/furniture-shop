@@ -7,6 +7,7 @@ import { CartComponent } from './cart/cart.component';
 import { OrderListComponent } from './order-list/order-list.component';
 import { UserAddressComponent } from './user-address/user-address.component';
 import { ProfileDetailsComponent } from './profile-details/profile-details.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 
 const routes: Routes = [
@@ -17,7 +18,8 @@ const routes: Routes = [
   { path: 'orders', component: OrderListComponent },
   { path: 'address', component: UserAddressComponent },
   { path: 'user/profile', component: ProfileDetailsComponent },
-  { path: 'user', component: ProfileDetailsComponent }
+  { path: 'users', component: UserListComponent },
+  { path: 'user/:id', component: UserListComponent }
 ];
 
 @NgModule({

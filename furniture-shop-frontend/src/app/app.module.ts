@@ -23,6 +23,7 @@ import { OrderListComponent } from './order-list/order-list.component';
 import { OrderService } from './service/order/order-service.service';
 import { UserAddressComponent } from './user-address/user-address.component';
 import { ProfileDetailsComponent } from './profile-details/profile-details.component';
+import { UserListComponent } from './user-list/user-list.component';
 
 @NgModule({
   declarations: [
@@ -36,6 +37,7 @@ import { ProfileDetailsComponent } from './profile-details/profile-details.compo
     OrderListComponent,
     UserAddressComponent,
     ProfileDetailsComponent,
+    UserListComponent,
   ],
   imports: [
     BrowserModule,
