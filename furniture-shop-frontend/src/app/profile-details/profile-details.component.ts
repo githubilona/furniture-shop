@@ -9,7 +9,11 @@ import { UserService } from '../service/user/user.service';
 })
 export class ProfileDetailsComponent implements OnInit {
   user: User;
-  constructor(private userService: UserService) {}
+  isDone: boolean;
+  success: string;
+  constructor(private userService: UserService) {
+    this.success = 'Your profile details have been updated';
+  }
 
   ngOnInit(): void {
     this.fetchData();
@@ -27,6 +31,8 @@ export class ProfileDetailsComponent implements OnInit {
         'token',
         btoa(this.user.username + ':' + this.user.password)
       );
+      this.isDone = true;
+      setTimeout(() => this.isDone = false, 5000);
       this.fetchData();
     });
   }

@@ -10,8 +10,11 @@ import { Address } from '../model/address';
 export class UserAddressComponent implements OnInit {
   address: Address;
   isDone: boolean;
+  success: string;
 
-  constructor(private userAddressService: UserAddressService) {}
+  constructor(private userAddressService: UserAddressService) {
+    this.success = 'Your address has been updated!';
+  }
 
   ngOnInit(): void {
     this.fetchData();
