@@ -4,8 +4,10 @@ import com.example.furnitureshop.model.Furniture;
 import com.example.furnitureshop.repositories.FurnitureRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class FurnitureServiceImpl implements FurnitureService {
@@ -19,9 +21,11 @@ public class FurnitureServiceImpl implements FurnitureService {
 
     @Override
     public List<Furniture> findAll() {
-        return furnitureRepository.findAll();
+        return furnitureRepository.findAll()
+                .stream()
+                .filter(f -> !f.isDeleted())
+                .collect(Collectors.toList());
     }
-
     @Override
     public Furniture findById(Long id) {
         if (id != null && id < 0){
@@ -53,8 +57,14 @@ public class FurnitureServiceImpl implements FurnitureService {
         return furnitureForUpdate;
     }
 
-    @Override
-    public void delete(Long id) {
-        furnitureRepository.deleteById( id );
-    }
+@Override
+@Transactional
+public boolean delete(Long id) {
+    if (!furnitureRepository.existsById(id))
+        return false;
+    Furniture f = furnitureRepository.getOne(id);
+    f.setDeleted(true);
+    furnitureRepository.save(f);
+    return true;
+}
 }

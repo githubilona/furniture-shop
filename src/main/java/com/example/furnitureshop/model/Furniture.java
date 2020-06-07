@@ -56,4 +56,5 @@ public class Furniture {
         this.price = price;
         this.availableAmount = availableAmount;
     }
+    private boolean deleted;
 }

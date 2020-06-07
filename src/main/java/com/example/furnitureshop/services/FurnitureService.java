@@ -14,5 +14,5 @@ public interface FurnitureService {
 
     Furniture update(Long id, Furniture Furniture);
 
-    void delete(Long id);
+    boolean delete(Long id);
 }
