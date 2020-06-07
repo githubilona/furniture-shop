@@ -18,15 +18,18 @@ export class FurnitureListComponent implements OnInit {
   constructor(
     private furnitureService: FurnitureService,
     private cartService: CartService,
-    private authService: AuthService
+    public authService: AuthService
   ) {}
 
   ngOnInit() {
+    this.fetchData();
+  }
+
+  fetchData() {
     this.furnitureService.findAll().subscribe((data) => {
       this.furniture = data;
     });
   }
-
   addToCart(id: number, amount: number) {
     this.cartService.save(id, amount).subscribe((res) => {
       this.bought = true;
@@ -39,5 +42,8 @@ export class FurnitureListComponent implements OnInit {
 
   isAuthenticated(): boolean {
     return this.authService.isAuthenticated();
+  }
+  delete(id: number) {
+    return this.furnitureService.delete(id).subscribe(() => this.fetchData());
   }
 }

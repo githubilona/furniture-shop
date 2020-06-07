@@ -15,7 +15,10 @@ export class FurnitureService {
     return this.http.get<Furniture[]>(this.furnitureUrl);
   }
 
-  public save(furniture: Furniture){
+  public save(furniture: Furniture) {
     return this.http.post<Furniture>(this.furnitureUrl + '/add', furniture);
+  }
+  public delete(id: number) {
+    return this.http.delete(this.furnitureUrl + '/' + id);
   }
 }

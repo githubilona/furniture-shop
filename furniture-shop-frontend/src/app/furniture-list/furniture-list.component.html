@@ -1,5 +1,4 @@
-<div class="card my-5">
-  <div class="card-body">
+
     <table class="table table-bordered table-striped">
       <thead class="thead-dark">
         <tr>
@@ -9,7 +8,8 @@
           <th scope="col">Description</th>
           <th scope="col">Price</th>
           <th scope="col">Available amount</th>
-            <th scope="col" *ngIf="isAuthenticated()">Add to cart</th>
+          <th scope="col" *ngIf="isAuthenticated()">Add to cart</th>
+          <th *ngIf="authService.hasAdminRole()" scope="col">Edit \ Delete</th>
         </tr>
       </thead>
       <tbody>
@@ -20,18 +20,20 @@
           <td>{{ f.description }}</td>
           <td>{{ f.price }} zł</td>
           <td>{{ f.availableAmount }}</td>
-            <td *ngIf="isAuthenticated()">
-              <form (ngSubmit)="addToCart(f.id, f[i])" #userForm="ngForm">
-                <div class="form-group row">
-                  <div class="col col-lg-3">
-                    <input type="text" [(ngModel)]='f[i]' name='f[i]' class="form-control">
-                  </div>
-                  <button type="submit" class="btn btn-success">Add to cart</button>
+          <td *ngIf="isAuthenticated()">
+            <form (ngSubmit)="addToCart(f.id, f[i])" #userForm="ngForm">
+              <div class="form-group row">
+                <div class="col col-lg-3">
+                  <input type="text" [(ngModel)]='f[i]' name='f[i]' class="form-control">
                 </div>
-              </form>
-            </td>
+                <button type="submit" class="btn btn-success">Add to cart</button>
+              </div>
+            </form>
+          </td>
+          <td *ngIf="authService.hasAdminRole()">
+            <button class="btn btn-warning mr-3">Edit</button>
+            <button type="submit" (click)="delete(f.id)" class="btn btn-danger">Delete</button>
+          </td>
         </tr>
       </tbody>
     </table>
-  </div>
-</div>
