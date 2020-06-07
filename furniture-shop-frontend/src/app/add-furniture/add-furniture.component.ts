@@ -13,7 +13,9 @@ export class AddFurnitureComponent implements OnInit {
 
   constructor(private furnitureService: FurnitureService, private router: Router) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.furniture = new Furniture();
+  }
   onSubmit() {
     this.furnitureService.save(this.furniture).subscribe(
       (result) => this.goToFurnitureList(),
@@ -21,6 +23,6 @@ export class AddFurnitureComponent implements OnInit {
     );
   }
   goToFurnitureList() {
-    this.router.navigate(['/discs']);
+    this.router.navigate(['/furniture']);
   }
 }

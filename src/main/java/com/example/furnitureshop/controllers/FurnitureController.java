@@ -10,6 +10,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/furniture")
+@CrossOrigin(origins = {"http://localhost:4200"})
 public class FurnitureController {
 
     private FurnitureService furnitureService;
@@ -29,7 +30,7 @@ public class FurnitureController {
         return furnitureService.findById(id);
     }
 
-    @PostMapping
+    @PostMapping("/add")
     @ResponseStatus(HttpStatus.CREATED)
     public Long create(@RequestBody Furniture Furniture) {
         return furnitureService.create(Furniture);

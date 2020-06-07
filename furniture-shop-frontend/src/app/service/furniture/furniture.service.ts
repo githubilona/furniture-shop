@@ -16,6 +16,6 @@ export class FurnitureService {
   }
 
   public save(furniture: Furniture){
-    return this.http.post<Furniture>(this.furnitureUrl, furniture);
+    return this.http.post<Furniture>(this.furnitureUrl + '/add', furniture);
   }
 }
