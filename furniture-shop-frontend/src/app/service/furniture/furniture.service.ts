@@ -6,12 +6,16 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class FurnitureService {
-  private furnitureUrls: string;
+  private furnitureUrl: string;
   constructor(private http: HttpClient) {
-    this.furnitureUrls = 'http://localhost:8080/furniture';
+    this.furnitureUrl = 'http://localhost:8080/furniture';
   }
 
   public findAll(): Observable<Furniture[]> {
-    return this.http.get<Furniture[]>(this.furnitureUrls);
+    return this.http.get<Furniture[]>(this.furnitureUrl);
+  }
+
+  public save(furniture: Furniture){
+    return this.http.post<Furniture>(this.furnitureUrl, furniture);
   }
 }

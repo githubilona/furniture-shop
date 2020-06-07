@@ -8,6 +8,7 @@ import { OrderListComponent } from './order-list/order-list.component';
 import { UserAddressComponent } from './user-address/user-address.component';
 import { ProfileDetailsComponent } from './profile-details/profile-details.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { AddFurnitureComponent } from './add-furniture/add-furniture.component';
 
 
 const routes: Routes = [
@@ -19,7 +20,8 @@ const routes: Routes = [
   { path: 'address', component: UserAddressComponent },
   { path: 'user/profile', component: ProfileDetailsComponent },
   { path: 'users', component: UserListComponent },
-  { path: 'user/:id', component: UserListComponent }
+  { path: 'user/:id', component: UserListComponent },
+  { path: 'furniture/add', component: AddFurnitureComponent }
 ];
 
 @NgModule({

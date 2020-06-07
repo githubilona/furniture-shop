@@ -1,0 +1,38 @@
+<div class="container d-flex justify-content-center">
+    <div class="card my-5"  style="width: 30rem;">
+      <div class="card-body">
+        <form (ngSubmit)="onSubmit()" #form="ngForm">
+          <h2>Add new furniture</h2>
+          <div class="md-form">
+            <label for="name">Name</label>
+            <input type="text" [(ngModel)]="furniture.name" class="form-control" id="name" name="name" required
+              #name="ngModel">
+          </div>
+          <div class="md-form">
+            <label for="producer">Producer</label>
+            <input type="text" [(ngModel)]="furniture.producer" class="form-control" id="producer" name="producer" required
+              #name="ngModel">
+          </div>
+          <div class="md-form">
+            <label for="description">Description</label>
+            <input type="text" [(ngModel)]="furniture.description" class="form-control" id="description" name="description"
+              required #name="ngModel">
+          </div>
+          <div class="md-form">
+            <label for="price">Price</label>
+            <input type="text" [(ngModel)]="furniture.price" class="form-control" id="price" name="price" required
+              #name="ngModel">
+          </div>
+  
+          <div class="md-form">
+            <label for="amount">Available amount</label>
+            <input type="text" [(ngModel)]="furniture.availableAmount" class="form-control" id="availableAmount" name="availableAmount" required
+              #name="ngModel">
+          </div>
+            <br>
+          <button type="submit" class="btn btn-info">Submit</button>
+        </form>
+  
+      </div>
+    </div>
+  </div>

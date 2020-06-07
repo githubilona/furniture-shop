@@ -24,6 +24,7 @@ import { OrderService } from './service/order/order-service.service';
 import { UserAddressComponent } from './user-address/user-address.component';
 import { ProfileDetailsComponent } from './profile-details/profile-details.component';
 import { UserListComponent } from './user-list/user-list.component';
+import { AddFurnitureComponent } from './add-furniture/add-furniture.component';
 
 @NgModule({
   declarations: [
@@ -38,6 +39,7 @@ import { UserListComponent } from './user-list/user-list.component';
     UserAddressComponent,
     ProfileDetailsComponent,
     UserListComponent,
+    AddFurnitureComponent,
   ],
   imports: [
     BrowserModule,
