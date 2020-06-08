@@ -1,15 +1,17 @@
 <mat-toolbar color="primary" class="mat-elevation-z8">
   <span>Furniture shop</span>
 
-  <a mat-button [routerLink]="['/furniture']">Furniture</a>
+  <a mat-button [routerLink]="['/furniture']">Furniture List</a>
   
 
   <div *ngIf="authService.hasAdminRole()">
-
-        <a mat-button class="text-warning" routerLink="/furniture/add">Add furniture</a>
-        <a mat-button class="text-warning" routerLink="/users">User list</a>
-  
+    <a mat-button [matMenuTriggerFor]="menu">Admin Menu</a>
+    <mat-menu #menu="matMenu">
+      <a mat-menu-item routerLink="/furniture/add">Add furniture</a>
+      <a mat-menu-item  routerLink="/users">User list</a>
+    </mat-menu>   
   </div>
+
 
   <div class="spacer"></div>
 

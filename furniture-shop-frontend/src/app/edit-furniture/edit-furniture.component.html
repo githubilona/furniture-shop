@@ -2,14 +2,7 @@
     <div class="card my-5">
       <div class="card-body">
         <div *ngIf="furniture">
-  
-            <!-- <div *ngIf="isInfo">
-                <div class="alert alert-success" role="alert">
-                  {{ info }}
-                  <mat-progress-bar [value]="value"></mat-progress-bar>
-                </div>
-              </div>
-   -->
+
           <form (ngSubmit)="edit()" #form="ngForm">
             <h2>Edit  {{ furniture.name }} - {{ furniture.producer }}</h2>
             <div class="form-group">

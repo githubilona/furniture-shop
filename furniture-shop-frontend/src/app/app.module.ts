@@ -26,7 +26,7 @@ import { ProfileDetailsComponent } from './profile-details/profile-details.compo
 import { UserListComponent } from './user-list/user-list.component';
 import { AddFurnitureComponent } from './add-furniture/add-furniture.component';
 import { EditFurnitureComponent } from './edit-furniture/edit-furniture.component';
-
+import { MatMenuModule } from '@angular/material/menu';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,6 +51,7 @@ import { EditFurnitureComponent } from './edit-furniture/edit-furniture.componen
     BrowserAnimationsModule,
     MatButtonModule,
     FormsModule,
+    MatMenuModule
   ],
   providers: [
     FurnitureService,
