@@ -31,7 +31,7 @@
             </form>
           </td>
           <td *ngIf="authService.hasAdminRole()">
-            <button class="btn btn-warning mr-3">Edit</button>
+            <button class="btn btn-warning mr-3"[routerLink]="['/edit', f.id]">Edit</button>
             <button type="submit" (click)="delete(f.id)" class="btn btn-danger">Delete</button>
           </td>
         </tr>

@@ -25,6 +25,7 @@ import { UserAddressComponent } from './user-address/user-address.component';
 import { ProfileDetailsComponent } from './profile-details/profile-details.component';
 import { UserListComponent } from './user-list/user-list.component';
 import { AddFurnitureComponent } from './add-furniture/add-furniture.component';
+import { EditFurnitureComponent } from './edit-furniture/edit-furniture.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +41,7 @@ import { AddFurnitureComponent } from './add-furniture/add-furniture.component';
     ProfileDetailsComponent,
     UserListComponent,
     AddFurnitureComponent,
+    EditFurnitureComponent,
   ],
   imports: [
     BrowserModule,

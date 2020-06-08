@@ -1,0 +1,49 @@
+<div class="container">
+    <div class="card my-5">
+      <div class="card-body">
+        <div *ngIf="furniture">
+  
+            <!-- <div *ngIf="isInfo">
+                <div class="alert alert-success" role="alert">
+                  {{ info }}
+                  <mat-progress-bar [value]="value"></mat-progress-bar>
+                </div>
+              </div>
+   -->
+          <form (ngSubmit)="edit()" #form="ngForm">
+            <h2>Edit  {{ furniture.name }} - {{ furniture.producer }}</h2>
+            <div class="form-group">
+              <label for="band">Name</label>
+              <input type="text" [(ngModel)]="furniture.name" class="form-control" id="name" name="name" required
+                #name="ngModel">
+            </div>
+            <div class="form-group">
+              <label for="title">Producer</label>
+              <input type="text" [(ngModel)]="furniture.producer" class="form-control" id="producer" name="producer" required
+                #name="ngModel">
+            </div>
+            <div class="form-group">
+              <label for="description">Description</label>
+              <input type="text" [(ngModel)]="furniture.description" class="form-control" id="description" name="description"
+                required #name="ngModel">
+            </div>
+        
+            
+            <div class="form-group">
+              <label for="price">Price</label>
+              <input type="text" [(ngModel)]="furniture.price" class="form-control" id="price" name="price" required
+                #name="ngModel">
+            </div>
+  
+            <div class="form-group">
+              <label for="amount">Amount</label>
+              <input type="text" [(ngModel)]="furniture.availableAmount" class="form-control" id="availableAmount" name="availableAmount" required
+                #name="ngModel">
+            </div>
+            
+            <button type="submit" class="btn btn-info">Submit</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>

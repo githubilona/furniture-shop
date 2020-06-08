@@ -21,4 +21,12 @@ export class FurnitureService {
   public delete(id: number) {
     return this.http.delete(this.furnitureUrl + '/' + id);
   }
+
+  public findById(id: number): Observable<Furniture> {
+    return this.http.get<Furniture>(this.furnitureUrl + '/' + id);
+  }
+
+  public edit(id: number, furniture: Furniture) {
+    return this.http.put<Furniture>(this.furnitureUrl + '/' + id, furniture);
+  }
 }
